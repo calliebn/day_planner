@@ -35,7 +35,7 @@ for (let i=1; i<timesArr.length; i++) {
 
     //Creating the Save Button
     let newBtnEl = $("<button>");
-    //Adding CSS class to button
+    //Adding CSS classes to button
     newBtnEl.addClass("col saveBtn");
     let newiTag = $("<i>")
     newiTag.addClass("far fa-save");
@@ -49,10 +49,9 @@ for (let i=1; i<timesArr.length; i++) {
 var currentHr = moment().format('hA')
 console.log(currentHr)
 
-// loop over time blocks
+// loops over time blocks
 $(".time-block").each(function() {
     let blockHr = $(this).find(".hour").attr("id");
-    console.log(blockHr)
     if (blockHr === currentHr) {
         $(this).addClass("present")
     } else if (blockHr < currentHr) {
@@ -65,11 +64,13 @@ $(".time-block").each(function() {
 })
 
 $(".saveBtn").on("click", function() {
-    console.log("click save btn")
+    let event = localStorage.setItem(".task")
     let task = $(this).siblings(".task").val()
-    console.log(task)
 
     //grab the block hour
     //set local storage item (hour, task)
-}
-)
+})
+
+$(".clear").on("click", function() {
+    localStorage.clear()
+})
