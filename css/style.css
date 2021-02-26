@@ -40,6 +40,13 @@ body {
     background-color: #ffffff;
     color: #000000;
     border-top: 1px dashed #000000;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+
+  .hour p {
+    margin-bottom: 0;
   }
   
   .past {
@@ -77,7 +84,6 @@ body {
   }
 
  .clear {
-   align: center;
    border-radius: 15px;
    padding: 10px;
   }

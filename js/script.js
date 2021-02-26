@@ -1,5 +1,5 @@
 var today = moment();
-$("#currentDay").text(today.format("MMM Do, YYYY"));
+$("#currentDay").text(today.format("dddd, MMMM Do, YYYY"));
 
 // On load, the page should check the current date and time
 // The date in the header should reflect the current date
@@ -12,9 +12,21 @@ $("#currentDay").text(today.format("MMM Do, YYYY"));
 // When the page is refreshed, the events should not disappear unless it is a new day?
 
 // Code to Generate the timeblocks
-let timesArr = ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM"];
+let timesArr = ["09", "10", "11", "12", "13", "14", "15", "16", "17"];
 
-for (let i=1; i<timesArr.length; i++) {
+let timeNew = {
+    "09": "9AM",
+    "10": "10AM",
+    "11": "11AM",
+    "12": "12PM",
+    "13": "1PM",
+    "14": "2PM",
+    "15": "3PM",
+    "16": "4PM",
+    "17": "5PM"
+}
+
+for (let i = 0; i < timesArr.length; i++) {
     //Creating the new row 
     let newTimeBlockEl = $("<div>");
     newTimeBlockEl.addClass("row time-block");
@@ -22,7 +34,7 @@ for (let i=1; i<timesArr.length; i++) {
     let hourEl = $("<div>")
     hourEl.addClass("col hour");
     hourEl.attr("id", timesArr[i]);
-    let newPTag = $("<p>").text(timesArr[i])
+    let newPTag = $("<p>").text(timeNew[timesArr[i]])
     newPTag.appendTo(hourEl)
     hourEl.appendTo(newTimeBlockEl)
 
@@ -46,12 +58,13 @@ for (let i=1; i<timesArr.length; i++) {
     newTimeBlockEl.appendTo(".container");
 }
 
-var currentHr = moment().format('hA')
+var currentHr = parseInt(moment().format('HH'));
 console.log(currentHr)
 
-// loops over time blocks
-$(".time-block").each(function() {
-    let blockHr = $(this).find(".hour").attr("id");
+// loops over time blocks and changes the statusbased on the time
+$(".time-block").each(function () {
+    let blockHr = parseInt($(this).find(".hour").attr("id"));
+    console.log(blockHr)
     if (blockHr === currentHr) {
         $(this).addClass("present")
     } else if (blockHr < currentHr) {
@@ -63,14 +76,20 @@ $(".time-block").each(function() {
     // textArea.value = task
 })
 
-$(".saveBtn").on("click", function() {
-    let event = localStorage.setItem(".task")
-    let task = $(this).siblings(".task").val()
+$(".saveBtn").on("click", function () {
+    event.preventDefault()
+    let hour = timesArr
+    let taskarea = $(this).siblings(".task").val()
+    let task = localStorage.setItem(hour, taskarea)
+    //let task = localstorage.setItem("taskarea")
+    window.localStorage.getItem(task)
+    console.log("button click")
+    //let task = $(this).siblings(".task").val()
 
     //grab the block hour
     //set local storage item (hour, task)
 })
 
-$(".clear").on("click", function() {
+$(".clear").on("click", function () {
     localStorage.clear()
 })
