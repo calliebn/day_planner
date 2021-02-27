@@ -71,6 +71,10 @@ body {
     background-color: #06AED5;
     color: white;
   }
+
+  .saveBtn:focus {
+    outline: none;
+  }
   
   .saveBtn i:hover {
     font-size: 20px;
@@ -86,4 +90,8 @@ body {
  .clear {
    border-radius: 15px;
    padding: 10px;
+  }
+
+  .clear:focus {
+    outline: none;
   }
