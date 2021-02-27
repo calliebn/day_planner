@@ -32,6 +32,7 @@ for (let i = 0; i < timesArr.length; i++) {
 
     //Creating the textarea
     let newTextAreaEL = $("<textarea>");
+    newTextAreaEL.val(localStorage.getItem(timeNew[timesArr[i]]))
     //Adding CSS class to text area element
     newTextAreaEL.addClass("col-6 task")
     //Appending to the time-block div
@@ -67,14 +68,12 @@ $(".time-block").each(function () {
 // Saves the tasks to the planner
 $(".saveBtn").on("click", function () {
     //event.preventDefault()
-    let id = JSON.stringify[timeNew]
-    let hour = $(this).siblings(id).val()
+    //let id = JSON.stringify(timeNew)
+    let hour = $(this).siblings(".hour").children().first().text()
     let taskarea = $(this).siblings("textarea").val()
     let task = localStorage.setItem(hour, taskarea)
-    //let appointment = JSON.stringify(task)
     //let task = localstorage.setItem("taskarea")
     localStorage.getItem(task)
-    console.log(task)
     //let task = $(this).siblings(".task").val()
 
     //grab the block hour
