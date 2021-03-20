@@ -14,3 +14,7 @@ Using Moment.js, I was able to achieve all of the criteria listed above. I was a
 
 <a href="https://github.com/calliebn/day_planner">Github</a>
 <a href="https://calliebn.github.io/day_planner/">Deployed Project</a>
+
+## Contributors
+Callie Nipper
+<a href="mailto:mailto:callie.nipper@gmail.com">callie.nipper@gmail.com</a>
